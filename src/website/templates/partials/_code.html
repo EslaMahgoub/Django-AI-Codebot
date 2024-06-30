@@ -1,0 +1,22 @@
+<pre>
+<code class="language-{{lang}} line-numbers">
+{{response}}
+
+</code>
+</pre>
+</br>
+
+<form method="POST" action="{% url 'home' %}">
+    {% csrf_token %}
+        <div class="mb-3">
+        <textarea class="form-control" name="code" placeholder="{{placeholder}}" rows="3">{% if code %}{{code}}{% endif %}</textarea>
+        </div>
+    <select class="form-select mb-2" name="lang">
+        <option selected>Select Programming Language</option>
+        {% for lang in lang_list  %}
+            <option value="{{lang}}">{{lang}}</option>
+        {% endfor %}
+        
+        </select>
+    <button type="submit" class="btn btn-secondary">Submit</button>
+    </form>
